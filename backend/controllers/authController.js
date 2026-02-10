@@ -223,7 +223,7 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false, // true in production
-      sameSite: "strict",
+      sameSite: "None",
     });
 
     // 5. Send user data
