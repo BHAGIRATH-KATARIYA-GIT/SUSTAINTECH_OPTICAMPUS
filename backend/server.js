@@ -49,7 +49,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:8080",
-      "https://opticampus.vercel.app" // update if Vercel gives different URL
+      "https://opticampus-beta.vercel.app/" // update if Vercel gives different URL
     ],
     credentials: true
   })

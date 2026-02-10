@@ -244,6 +244,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "@/App";
 
 const roles = [
   { id: "student", label: "Student", icon: GraduationCap, desc: "Request events & report issues" },
@@ -269,7 +270,7 @@ const Register = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch(`${baseUrl}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
