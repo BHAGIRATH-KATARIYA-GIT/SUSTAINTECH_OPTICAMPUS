@@ -280,6 +280,7 @@ const Register = () => {
 
       const res = await fetch(`${baseUrl}/api/auth/register`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

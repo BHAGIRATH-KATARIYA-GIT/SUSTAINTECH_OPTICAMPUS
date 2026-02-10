@@ -88,15 +88,36 @@ import maintenance from "./routes/maintenance.route.js";
 await connectDB();
 const app = express();
 
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:8080",
+//       "https://opticampus-beta.vercel.app"
+//     ],
+//     credentials: true
+//   })
+// );
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:8080",
-      "https://opticampus-beta.vercel.app"
-    ],
-    credentials: true
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:8080",
+        "https://opticampus-beta.vercel.app",
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+  
 
 app.use(express.json());
 app.use(cookieParser());
