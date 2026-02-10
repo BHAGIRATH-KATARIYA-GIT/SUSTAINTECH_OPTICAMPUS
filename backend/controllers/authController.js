@@ -149,12 +149,23 @@ export const register = async (req, res) => {
       isEmailVerified: false,
     });
 
-    await sendMail(email, otp);
-
-    return res.status(200).json({ message: "OTP sent successfully" });
+    try {
+      await sendMail(email, otp);
+      console.log(`✅ OTP sent to ${email}`);
+      return res.status(200).json({ message: "OTP sent successfully" });
+    } catch (emailError) {
+      console.error("❌ Email sending error:", emailError.message);
+      
+      // Delete the user since OTP couldn't be sent
+      await User.deleteOne({ email });
+      
+      return res.status(500).json({ 
+        message: `Failed to send OTP: ${emailError.message}. Please check email credentials.` 
+      });
+    }
   } catch (error) {
-    console.error("Register error:", error);
-    return res.status(500).json({ message: "Registration failed" });
+    console.error("❌ Register error:", error.message);
+    return res.status(500).json({ message: `Registration failed: ${error.message}` });
   }
 };
 
