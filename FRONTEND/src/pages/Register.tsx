@@ -729,7 +729,7 @@ const Register = () => {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="you@university.edu"
+                    placeholder="email pattern as student-2025kuec2097@iiitkota.ac.in , for other domain you can use anything"
                     className="pl-10 h-12"
                     value={formData.email}
                     onChange={(e) =>
