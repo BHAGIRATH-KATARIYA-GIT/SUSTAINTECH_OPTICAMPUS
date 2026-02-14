@@ -116,6 +116,8 @@ import { Provider } from "react-redux";
 import FacultyMaintenanceStatus from "./pages/dashboard/FacultyMaintenanceStatus";
 import FacultyEventRequests from "./pages/dashboard/FacultyEventRequests";
 import FacultyDashboard from "./pages/dashboard/FacultyDashboard";
+import PapersSection from "./components/papersection/PapersSection";
+import PaperUpload from "./components/papersection/PaperUpload";
 
 const queryClient = new QueryClient();
 
@@ -133,6 +135,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/previousyearpaper" element={<PapersSection />} />
+            <Route path="/uploadpaper" element={<PaperUpload />} />
 
             {/* Student Dashboard */}
             <Route path="/dashboard/student" element={<StudentDashboard />} />
