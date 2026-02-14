@@ -52,7 +52,7 @@ const flows = [
 
 const FlowsSection = () => {
   return (
-    <section className="py-24 gradient-hero-bg relative overflow-hidden">
+    <section id="flows" className="py-24 gradient-hero-bg relative overflow-hidden">
       <div className="container relative z-10">
         {/* Section header */}
         <motion.div
